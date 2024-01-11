@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// 390x844
+// დესკტოპზე (1920x1080)
 
-function App() {
+import { Routes, Route } from "react-router-dom";
+
+import LandingPage from "./pages/landing-page/LandingPage";
+import EmployeeInfo from "./pages/employee-info/EmployeeInfo";
+import LaptopInfo from "./pages/laptop-info/LaptopInfo";
+import LaptopList from "./pages/laptop-list/LaptopList";
+import ErrorPage from "./pages/error-page/ErrorPage";
+import LaptopData from "./pages/laptop-data/LaptopData";
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/employee-info" element={<EmployeeInfo />} />
+      <Route path="/laptop-info" element={<LaptopInfo />} />
+      <Route path="/laptop-list" element={<LaptopList />} />
+      <Route path="/laptop-data" element={<LaptopData />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
