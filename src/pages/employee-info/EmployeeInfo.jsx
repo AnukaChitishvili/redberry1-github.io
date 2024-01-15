@@ -12,8 +12,8 @@ import {
   EclipseLogoWrapper,
 } from "./employeeInfo.style";
 //
-import TestSelectinput from "../../components/testSelectinput";
-import GetImage from "../../getImage";
+// import TestSelectinput from "../../components/testSelectinput";
+// import GetImage from "../../getImage";
 
 const EmployeeInfo = () => {
   const navigate = useNavigate();
@@ -34,8 +34,8 @@ const EmployeeInfo = () => {
           <EclipseLogo />
         </EclipseLogoWrapper>
       </Wrapper>
-      {/* <TestSelectinput /> */}
-      {/* <GetImage /> */}
+      {/* <TestSelectinput />
+      <GetImage /> */}
     </Container>
   );
 };

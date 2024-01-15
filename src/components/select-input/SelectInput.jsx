@@ -1,15 +1,17 @@
 import { SelectContainer, Select } from "./selectInput.style";
 
-const SelectInput = ({ name, id, positions, onChange = () => {} }) => {
+const SelectInput = ({ name, id, options, onChange = () => {} }) => {
+  console.log(name);
+
   return (
     <>
       {/* <label for="position">Standard Select</label> */}
       <SelectContainer>
         <Select name={name} id={id} onChange={onChange}>
-          {positions.map((position) => {
+          {options.map((option) => {
             return (
-              <option value={position} key={position}>
-                {position}
+              <option value={option} key={option}>
+                {option}
               </option>
             );
           })}

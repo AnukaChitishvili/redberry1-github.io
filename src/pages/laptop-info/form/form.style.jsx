@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   background-color: #ffffff;
   border-radius: 18px;
   display: flex;
@@ -49,6 +49,12 @@ export const ButtonWrapper = styled.div`
   @media (max-width: 810px) {
     width: 150px;
   }
+`;
+
+export const SelectInputWrapper = styled.div`
+  margin-top: 30px;
+  width: 100%;
+  height: 76px;
 `;
 
 // rename
