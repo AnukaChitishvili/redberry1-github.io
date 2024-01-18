@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import useOutsideClickHandler from "../helpers/other/outsideClickHandler";
 import {
   Container,
   PopUpWrapper,
@@ -10,22 +12,25 @@ import {
 import Button from "../components/button/Button";
 import PopUpIcon from "../assets/icons/Pop-up-icon.svg";
 
-const PopUp = () => {
+const PopUp = ({ togglePopUp }) => {
+  const popUpRef = useRef();
   const navigate = useNavigate();
-
   const navigateToLaptopList = () => {
     navigate("/laptop-list");
   };
-
   const navigateToLandingPage = () => {
     navigate("/");
   };
 
   // isBLue shesacvellei
 
+  useOutsideClickHandler(popUpRef, () => {
+    togglePopUp();
+  });
+
   return (
     <Container>
-      <PopUpWrapper>
+      <PopUpWrapper ref={popUpRef}>
         <SuccessIcon src={PopUpIcon} alt="success" />
         <Title>ჩანაწერი დამატებულია!</Title>
         <ButtonWrapper isFirst>

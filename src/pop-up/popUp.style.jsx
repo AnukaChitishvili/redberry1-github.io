@@ -20,6 +20,7 @@ export const PopUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* z-index: 100; */
   @media (max-width: 810px) {
     width: 100%;
     height: 100vh;

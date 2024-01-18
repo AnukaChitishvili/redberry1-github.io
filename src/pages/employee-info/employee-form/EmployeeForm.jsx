@@ -17,9 +17,9 @@ import {
   SelectInputWrapper,
   BottomInputWrapper,
   ButtonWrapper,
-} from "./form.style";
+} from "./employeeForm.style";
 
-const Form = () => {
+const EmployeeForm = () => {
   const navigate = useNavigate();
   // const [teams, setTeams] = useState(TEAMS);
   // const [positions, setPositions] = useState(POSITIONS);
@@ -38,16 +38,14 @@ const Form = () => {
       surName: "",
       email: "",
       phoneNumber: "",
-      // team_id: "",
+      team_id: "",
       // position_id: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      navigate("/laptop-info");
+      navigate("/new-laptop/laptop-info");
     },
   });
-
-  // Eseni pirikit ar unda ikos? jer set ara?
 
   useEffect(() => {
     const retrievedData = localStorage.getItem("values");
@@ -101,14 +99,15 @@ const Form = () => {
             </InputContainer>
           </InputsContainer>
           <SelectInputWrapper>
-            {/* <SelectInput
-      name="team_id"
-      title="თიმი"
-      // options={["this", "and"]}
-      // setFieldValue={handleInputChange}
-      value={values.team_id}
-      // error={errors.team_id && touched.team_id ? errors.team_id : null}
-    /> */}
+            <SelectInput
+              name="team_id"
+              title="თიმი"
+              options={["this", "and"]}
+              onChange={formik.handleChange}
+              // setFieldValue={handleInputChange}
+              // value={values.team_id}
+              // error={errors.team_id && touched.team_id ? errors.team_id : null}
+            />
           </SelectInputWrapper>
           <SelectInputWrapper>
             {/* <SelectInput
@@ -163,4 +162,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default EmployeeForm;

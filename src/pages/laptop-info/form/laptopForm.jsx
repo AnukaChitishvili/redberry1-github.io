@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Formik, useFormik } from "formik";
 
 import { DataContext } from "../../../context/dataContext";
@@ -28,18 +28,19 @@ import {
   MobileUploadContainer,
   UploadIconContainer,
   SelectInputWrapper,
-} from "./form.style";
+} from "./laptopForm.style";
 import SelectInput from "../../../components/select-input/SelectInput";
 
-const Form = () => {
-  const { user } = useContext(DataContext);
-  const [popUp, setPopUp] = useState(false);
+const LaptopForm = () => {
+  // const { user } = useContext(DataContext); working
+  const [openPopUp, setOpenPopUp] = useState(false);
 
-  console.log("this", user);
-
-  const openPopUp = () => {
-    setPopUp((prevState) => !prevState);
+  useEffect(() => {});
+  const togglePopUp = () => {
+    setOpenPopUp((prevState) => !prevState);
   };
+
+  console.log(openPopUp);
 
   const formik = useFormik({
     initialValues: {
@@ -58,6 +59,20 @@ const Form = () => {
     },
   });
 
+  console.log("tviotn pop upi", openPopUp);
+
+  // const handleInputChange = async (e) => {
+  //   await formik.setFieldValue(e.target.name, e.target.value);
+  // };
+
+  // <SelectInput
+  // value={formik.values.position_id}
+  // options={positions}
+  // title="პოზიცია"
+  // setFieldValue={handleInputChange}
+  // name="position_id"
+  // />
+
   // routingze ra unda xdebosdes am dros da es unda gadadiosdes tu gaivlis validciebs
 
   return (
@@ -73,7 +88,7 @@ const Form = () => {
           <UploadIconContainer src={UploadIcon} alt="upload" />
           <UploadTitle>ლეპტოპის ფოტოს ატვირთვა</UploadTitle>
         </MobileUploadContainer> */}
-        <Wrapper>
+        {/* <Wrapper>
           <InputContainer>
             <InputWrapper>
               <Input
@@ -228,10 +243,12 @@ const Form = () => {
               {popUp && <PopUp />}
             </ButtonWrapper>
           </ButtonContainer>
-        </Wrapper>
+        </Wrapper> */}
+        <Button text="დამახსოვრება" type="submit" onClick={togglePopUp} />
+        {openPopUp && <PopUp togglePopUp={togglePopUp} />}
       </FormContainer>
     </Formik>
   );
 };
 
-export default Form;
+export default LaptopForm;

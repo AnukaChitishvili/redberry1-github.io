@@ -17,7 +17,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const navigateToEmployeeFormPage = () => {
-    navigate("/employee-info");
+    navigate("/new-laptop/employee-info");
   };
 
   const navigateToLaptopListPage = () => {

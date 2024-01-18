@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BackwardButton from "../../components/backward-button/BackwardButton";
 import EclipseLogo from "../../components/eclipse-logo/EclipseLogo";
 import Title from "../../components/title/Title";
-import Form from "./form/Form";
+import Form from "./form/laptopForm";
 
 import {
   Container,

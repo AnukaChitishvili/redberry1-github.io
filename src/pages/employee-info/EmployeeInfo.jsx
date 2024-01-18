@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import Title from "../../components/title/Title";
 import BackwardButton from "../../components/backward-button/BackwardButton";
-import Form from "./form/Form";
+import Form from "./employee-form/EmployeeForm";
 import EclipseLogo from "../../components/eclipse-logo/EclipseLogo";
 
 import {

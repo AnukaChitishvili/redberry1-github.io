@@ -10,21 +10,32 @@ import LaptopInfo from "./pages/laptop-info/LaptopInfo";
 import LaptopList from "./pages/laptop-list/LaptopList";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import LaptopData from "./pages/laptop-data/LaptopData";
+import PopUp from "./pop-up/PopUp";
+
+// const useLaptopData = () => {
+//   const [user, setUser] = useState("Anukaaa")
+
+//   return {
+//     user, setUser
+//   }
+// }
 
 export const App = () => {
-  const [user, setUser] = useState("Anukaaa"); // thats for example
+  //   const [user, setUser] = useState("Anukaaa"); // thats for example
+  // const laptopData = useLaptopData()
 
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <DataContext.Provider>
-        <Route path="/employee-info" element={<EmployeeInfo />} />
-        <Route path="/laptop-info" element={<LaptopInfo />} />
-      </DataContext.Provider>
-      <Route path="/laptop-list" element={<LaptopList />} />
-      <Route path="/laptop-data" element={<LaptopData />} />
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
+    <DataContext.Provider value={{}}>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/new-laptop/employee-info" element={<EmployeeInfo />} />
+        <Route path="/new-laptop/laptop-info" element={<LaptopInfo />} />
+        <Route path="/new-laptop/success" element={<PopUp />} />
+        <Route path="/laptop-list" element={<LaptopList />} />
+        <Route path="/laptop-data" element={<LaptopData />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </DataContext.Provider>
   );
 };
 
