@@ -1,10 +1,26 @@
 import { Input, Label } from "./radioInput.style";
 
-const RadioInput = ({ label, isSecond }) => {
+const RadioInput = ({
+  checked,
+  label,
+  name,
+  value,
+  onChange = () => {},
+  isSecond,
+  id,
+}) => {
   return (
     <>
-      <Input type="radio" id="SSD" name="SSD" value="SSD" isSecond={isSecond} />
-      <Label htmlFor="SSD">{label}</Label>
+      <Input
+        id={id}
+        type="radio"
+        name={name}
+        value={value}
+        onChange={onChange}
+        checked={checked}
+        isSecond={isSecond}
+      />
+      <Label> {label}</Label>
     </>
   );
 };

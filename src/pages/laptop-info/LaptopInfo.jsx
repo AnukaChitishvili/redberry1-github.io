@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BackwardButton from "../../components/backward-button/BackwardButton";
 import EclipseLogo from "../../components/eclipse-logo/EclipseLogo";
 import Title from "../../components/title/Title";
-import Form from "./form/laptopForm";
+import LaptopForm from "./laptop-form/laptopForm";
 
 import {
   Container,
@@ -26,7 +26,7 @@ const LaptopInfo = () => {
         <Title text="ლეპტოპის მახასიათებლები" currentPage="2/2" />
       </TitleWrapper>
       <Wrapper>
-        <Form />
+        <LaptopForm />
         <EclipseLogoWrapper>
           <EclipseLogo />
         </EclipseLogoWrapper>

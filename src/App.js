@@ -1,6 +1,6 @@
 // 390x844
 // დესკტოპზე (1920x1080)
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { DataContext } from "./context/dataContext";
@@ -11,21 +11,13 @@ import LaptopList from "./pages/laptop-list/LaptopList";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import LaptopData from "./pages/laptop-data/LaptopData";
 import PopUp from "./pop-up/PopUp";
-
-// const useLaptopData = () => {
-//   const [user, setUser] = useState("Anukaaa")
-
-//   return {
-//     user, setUser
-//   }
-// }
+import useGetData from "./test/useGetData";
 
 export const App = () => {
-  //   const [user, setUser] = useState("Anukaaa"); // thats for example
-  // const laptopData = useLaptopData()
+  const { laptopList, setLaptopList } = useGetData();
 
   return (
-    <DataContext.Provider value={{}}>
+    <DataContext.Provider value={{ laptopList, setLaptopList }}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/new-laptop/employee-info" element={<EmployeeInfo />} />

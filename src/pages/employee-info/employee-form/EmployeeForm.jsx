@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useFormik, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 
+import { DataContext } from "../../../context/dataContext";
 import validationSchema from "../../../helpers/validation-schema/validationSchema";
 // import { TEAMS, POSITIONS } from "../../../data/data";
 import Input from "../../../components/input/Input";
@@ -18,9 +19,13 @@ import {
   BottomInputWrapper,
   ButtonWrapper,
 } from "./employeeForm.style";
+import useGetData from "../../../test/useGetData";
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
+  const { laptopList, setLaptopList } = useContext(DataContext);
+  console.log(laptopList);
+
   // const [teams, setTeams] = useState(TEAMS);
   // const [positions, setPositions] = useState(POSITIONS);
 
@@ -30,20 +35,18 @@ const EmployeeForm = () => {
   //     .then((res) => setTeams(res.data));
   // }, []);
 
-  // bla bla
-
   const formik = useFormik({
     initialValues: {
       firstName: "",
       surName: "",
       email: "",
       phoneNumber: "",
-      team_id: "",
+      // team_id: "",
       // position_id: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      navigate("/new-laptop/laptop-info");
+      // navigate("/new-laptop/laptop-info");
     },
   });
 
@@ -99,15 +102,15 @@ const EmployeeForm = () => {
             </InputContainer>
           </InputsContainer>
           <SelectInputWrapper>
-            <SelectInput
+            {/* <SelectInput
               name="team_id"
               title="თიმი"
-              options={["this", "and"]}
+          
               onChange={formik.handleChange}
               // setFieldValue={handleInputChange}
               // value={values.team_id}
               // error={errors.team_id && touched.team_id ? errors.team_id : null}
-            />
+            /> */}
           </SelectInputWrapper>
           <SelectInputWrapper>
             {/* <SelectInput

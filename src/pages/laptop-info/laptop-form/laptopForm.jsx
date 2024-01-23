@@ -1,8 +1,9 @@
 import { useState, useContext, useEffect } from "react";
-import { Formik, useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { Formik, useFormik, Field } from "formik";
 
 import { DataContext } from "../../../context/dataContext";
-import { laptopBrands, Cpu } from "../../../test/selectInputData";
+import { LAPTOP_BRANDS, CPU } from "../../../test/selectInputData";
 import validationSchema2 from "../../../helpers/validation-schema-2/validationSchema2";
 import PopUp from "../../../pop-up/PopUp";
 import Button from "../../../components/button/Button";
@@ -30,55 +31,55 @@ import {
   SelectInputWrapper,
 } from "./laptopForm.style";
 import SelectInput from "../../../components/select-input/SelectInput";
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 const LaptopForm = () => {
-  // const { user } = useContext(DataContext); working
+  const navigate = useNavigate();
   const [openPopUp, setOpenPopUp] = useState(false);
 
-  useEffect(() => {});
   const togglePopUp = () => {
     setOpenPopUp((prevState) => !prevState);
+    navigate("/new-laptop/success");
   };
 
-  console.log(openPopUp);
+  const navigateToEmployeeInfoPage = () => {
+    navigate("/new-laptop/employee-info");
+  };
 
   const formik = useFormik({
     initialValues: {
       laptopName: "",
-      laptopBrands: [],
+      laptopBrand: [],
       CPU: [],
       CPU_core: "",
       CPU_flow: "",
       laptopRam: "",
+      memoryType: "",
       purchaseDate: "",
       laptopPrice: "",
+      laptopState: "",
     },
     validationSchema: validationSchema2,
     onSubmit: (values) => {
-      console.log(values);
+      console.log("this", values);
     },
   });
 
-  console.log("tviotn pop upi", openPopUp);
+  useEffect(() => {
+    const retrievedData = localStorage.getItem("values");
+    if (retrievedData) {
+      formik.setValues(JSON.parse(retrievedData));
+    }
+  }, []);
 
-  // const handleInputChange = async (e) => {
-  //   await formik.setFieldValue(e.target.name, e.target.value);
-  // };
-
-  // <SelectInput
-  // value={formik.values.position_id}
-  // options={positions}
-  // title="პოზიცია"
-  // setFieldValue={handleInputChange}
-  // name="position_id"
-  // />
-
-  // routingze ra unda xdebosdes am dros da es unda gadadiosdes tu gaivlis validciebs
+  useEffect(() => {
+    localStorage.setItem("values", JSON.stringify(formik.values));
+  }, [formik.values]);
 
   return (
     <Formik>
       <FormContainer onSubmit={formik.handleSubmit}>
-        {/* <UploadContainer>
+        <UploadContainer>
           <UploadTitle>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</UploadTitle>
           <ButtonWrapper>
             <Button text="ატვირთე" />
@@ -87,14 +88,13 @@ const LaptopForm = () => {
         <MobileUploadContainer>
           <UploadIconContainer src={UploadIcon} alt="upload" />
           <UploadTitle>ლეპტოპის ფოტოს ატვირთვა</UploadTitle>
-        </MobileUploadContainer> */}
-        {/* <Wrapper>
+        </MobileUploadContainer>
+        <Wrapper>
           <InputContainer>
             <InputWrapper>
               <Input
                 label="ლეპტოპის სახელი"
                 name="laptopName"
-                placeholder="makoshiii"
                 value={formik.values.laptopName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -107,29 +107,28 @@ const LaptopForm = () => {
             </InputWrapper>
             <SelectInputWrapper>
               <SelectInput
-                options={laptopBrands}
-                name="laptopBrands"
-                title="ლეპტოპის ბრენდი"
-                value={formik.values.laptopBrands}
-                // setFieldValue={handleInputChange}
+                options={LAPTOP_BRANDS}
+                name="laptopBrand"
+                value={formik.values.laptopBrand}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 error={
-                  formik.errors.laptopBrands && formik.touched.laptopBrands
-                    ? formik.errors.laptopBrands
+                  formik.errors.laptopBrand && formik.touched.laptopBrand
+                    ? formik.errors.laptopBrand
                     : null
                 }
               />
             </SelectInputWrapper>
           </InputContainer>
-
           <Border />
           <InputContainer>
             <SelectInputWrapper>
               <SelectInput
-                options={Cpu}
+                options={CPU}
                 name="CPU"
-                title="CPU" // title sad mak ro?..
                 value={formik.values.CPU}
-                // setFieldValue={handleInputChange}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 error={
                   formik.errors.CPU && formik.touched.CPU
                     ? formik.errors.CPU
@@ -141,7 +140,6 @@ const LaptopForm = () => {
               <Input
                 label="CPU-ს ბირთვი"
                 name="CPU_core"
-                placeholder="cpuuu"
                 value={formik.values.CPU_core}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -186,8 +184,23 @@ const LaptopForm = () => {
               <RadioInputContainer>
                 <RadioInputTitle>მეხსიერების ტიპი</RadioInputTitle>
                 <RadioInputWrapper>
-                  <RadioInput label="SSD" />
-                  <RadioInput label="HDD" isSecond />
+                  <RadioInput
+                    value="SSD"
+                    name="memoryType"
+                    id="SSD"
+                    onChange={formik.handleChange}
+                    checked={formik.values.memoryType === "SSD"}
+                    label="SSD"
+                  />
+                  <RadioInput
+                    value="HDD"
+                    name="memoryType"
+                    id="HDD"
+                    onChange={formik.handleChange}
+                    checked={formik.values.memoryType === "HDD"}
+                    label="HDD"
+                    isSecond
+                  />
                 </RadioInputWrapper>
               </RadioInputContainer>
             </InputContainer>
@@ -226,13 +239,34 @@ const LaptopForm = () => {
           <RadioInputContainer isLast>
             <RadioInputTitle>ლეპტოპის მდგომარეობა</RadioInputTitle>
             <RadioInputWrapper>
-              <RadioInput label="ახალი" />
-              <RadioInput label="მეორადი" isSecond />
+              <RadioInput
+                value="ახალი"
+                name="laptopState"
+                id="ახალი"
+                onChange={formik.handleChange}
+                checked={formik.values.laptopState === "ახალი"}
+                label="ახალი"
+              />
+              <RadioInput
+                value="მეორადი"
+                name="laptopState"
+                id="მეორადი"
+                onChange={formik.handleChange}
+                checked={formik.values.laptopState === "მეორადი"}
+                label="მეორადი"
+                isSecond
+              />
             </RadioInputWrapper>
           </RadioInputContainer>
           <ButtonContainer>
             <TransparentButtonWrapper>
-              <Button text="უკან" isTransparent isBlue type="button" />
+              <Button
+                text="უკან"
+                isTransparent
+                isBlue
+                type="button"
+                onClick={navigateToEmployeeInfoPage}
+              />
             </TransparentButtonWrapper>
             <ButtonWrapper>
               <Button
@@ -240,12 +274,10 @@ const LaptopForm = () => {
                 type="submit"
                 // onClick={openPopUp}
               />
-              {popUp && <PopUp />}
+              {/* {popUp && <PopUp />} */}
             </ButtonWrapper>
           </ButtonContainer>
-        </Wrapper> */}
-        <Button text="დამახსოვრება" type="submit" onClick={togglePopUp} />
-        {openPopUp && <PopUp togglePopUp={togglePopUp} />}
+        </Wrapper>
       </FormContainer>
     </Formik>
   );
