@@ -18,11 +18,11 @@ const Title = ({ text, currentPage, isFirstPage }) => {
       <TitleWrapper>
         <TitleBorderWrapper>
           <TitleText isFirst>თანამშრომლის ინფო</TitleText>
-          {location.pathname === "/employee-info" && <Border />}
+          {location.pathname === "/new-laptop/employee-info" && <Border />}
         </TitleBorderWrapper>
         <TitleBorderWrapper>
           <TitleText>ლეპტოპის მახასიათებლები</TitleText>
-          {location.pathname === "/laptop-info" && <Border />}
+          {location.pathname === "/new-laptop/laptop-info" && <Border />}
         </TitleBorderWrapper>
       </TitleWrapper>
       <MobileTitleWrapper isFirstPage={isFirstPage}>

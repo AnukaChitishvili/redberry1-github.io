@@ -12,7 +12,7 @@ import {
 import Button from "../components/button/Button";
 import PopUpIcon from "../assets/icons/Pop-up-icon.svg";
 
-const PopUp = ({ togglePopUp }) => {
+const PopUp = ({ togglePopUp = () => {}, what = () => {} }) => {
   const popUpRef = useRef();
   const navigate = useNavigate();
   const navigateToLaptopList = () => {
@@ -22,9 +22,8 @@ const PopUp = ({ togglePopUp }) => {
     navigate("/");
   };
 
-  // isBLue shesacvellei
-
   useOutsideClickHandler(popUpRef, () => {
+    console.log("here");
     togglePopUp();
   });
 

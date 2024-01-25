@@ -52,9 +52,10 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const SelectInputWrapper = styled.div`
-  margin-top: 30px;
-  width: 100%;
+  margin-top: 33px;
+  width: ${({ isFirst }) => (isFirst ? "455px" : "100%")};
   height: 76px;
+  margin-left: ${({ laptopBrand }) => (laptopBrand ? "30px" : "0")};
 `;
 
 // rename
@@ -69,6 +70,7 @@ export const Wrapper = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   width: 100%;
+  justify-content: space-between;
   @media (max-width: 810px) {
     flex-direction: column;
     align-items: center;
@@ -76,12 +78,12 @@ export const InputContainer = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  width: 100%;
-  margin-left: 50px;
+  width: ${({ isFirst }) => (isFirst ? "455px" : "100%")};
+  margin-left: ${({ isFirst }) => (isFirst ? "0" : "50px")};
   @media (max-width: 810px) {
-    /* background: blue; */
     margin-left: 0;
     margin-top: 19px;
+    width: 100%;
   }
 `;
 
@@ -102,7 +104,7 @@ export const RadioInputWrapper = styled.div`
 `;
 
 export const RadioInputTitle = styled.h3`
-  color: #000000;
+  color: ${({ error }) => (error ? "red" : "black")};
   font-size: 18px;
   margin: 0;
 `;

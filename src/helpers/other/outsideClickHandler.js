@@ -2,10 +2,9 @@ import { useEffect } from "react";
 const useOutsideClickHandler = (ref, handler) => {
   const handleClick = (e) => {
     if (ref.current && ref.current.contains(e.target)) {
-      console.log("inside");
+      return;
     } else {
-      console.log("outside");
-      // handler();
+      handler();
     }
   };
   useEffect(() => {
@@ -13,7 +12,7 @@ const useOutsideClickHandler = (ref, handler) => {
     return () => {
       document.removeEventListener("click", handleClick);
     };
-  });
+  }, []);
 };
 
 export default useOutsideClickHandler;

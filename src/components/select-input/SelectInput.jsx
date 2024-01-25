@@ -1,12 +1,9 @@
-import { SelectContainer, Select } from "./selectInput.style";
+import { SelectContainer, Select, ErrorMessage } from "./selectInput.style";
 
-const SelectInput = ({ name, id, options, onChange = () => {} }) => {
-  console.log(name);
-
+const SelectInput = ({ error, name, id, options, onChange = () => {} }) => {
   return (
     <>
-      {/* <label for="position">Standard Select</label> */}
-      <SelectContainer>
+      <SelectContainer hasError={error}>
         <Select name={name} id={id} onChange={onChange}>
           {options.map((option) => {
             return (
@@ -17,6 +14,7 @@ const SelectInput = ({ name, id, options, onChange = () => {} }) => {
           })}
         </Select>
       </SelectContainer>
+      <ErrorMessage>{error}</ErrorMessage>
     </>
   );
 };

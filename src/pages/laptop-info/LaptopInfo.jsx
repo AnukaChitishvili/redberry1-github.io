@@ -16,7 +16,7 @@ const LaptopInfo = () => {
   const navigate = useNavigate();
 
   const navigateToEmployeesFormPage = () => {
-    navigate("/employee-info");
+    navigate("/new-laptop/employee-info");
   };
 
   return (

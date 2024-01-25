@@ -10,3 +10,9 @@ export const Label = styled.label`
   font-size: 16px;
   margin-left: 10px;
 `;
+
+export const ErrorMessage = styled.span`
+  color: #e52f2f;
+  font-size: 14px;
+  text-align: center;
+`;

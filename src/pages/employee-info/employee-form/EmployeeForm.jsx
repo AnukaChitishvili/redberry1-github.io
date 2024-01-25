@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../../context/dataContext";
 import validationSchema from "../../../helpers/validation-schema/validationSchema";
-// import { TEAMS, POSITIONS } from "../../../data/data";
+import { TEAMS, POSITIONS } from "../../../data/data";
 import Input from "../../../components/input/Input";
 import SelectInput from "../../../components/select-input/SelectInput";
 import Button from "../../../components/button/Button";
@@ -24,16 +24,6 @@ import useGetData from "../../../test/useGetData";
 const EmployeeForm = () => {
   const navigate = useNavigate();
   const { laptopList, setLaptopList } = useContext(DataContext);
-  console.log(laptopList);
-
-  // const [teams, setTeams] = useState(TEAMS);
-  // const [positions, setPositions] = useState(POSITIONS);
-
-  // useEffect(() => {
-  //   fetch("https://pcfy.redberryinternship.ge/api/teams")
-  //     .then((res) => res.json())
-  //     .then((res) => setTeams(res.data));
-  // }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -41,15 +31,19 @@ const EmployeeForm = () => {
       surName: "",
       email: "",
       phoneNumber: "",
-      // team_id: "",
-      // position_id: "",
+      team_id: "",
+      position_id: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      // navigate("/new-laptop/laptop-info");
+      console.log("onSubmit", values);
+
+      navigate("/new-laptop/laptop-info");
+      setLaptopList([values]);
     },
   });
 
+  console.log("renderidan", laptopList);
   useEffect(() => {
     const retrievedData = localStorage.getItem("values");
     if (retrievedData) {
@@ -102,23 +96,32 @@ const EmployeeForm = () => {
             </InputContainer>
           </InputsContainer>
           <SelectInputWrapper>
-            {/* <SelectInput
+            <SelectInput
+              options={TEAMS}
               name="team_id"
-              title="თიმი"
-          
+              value={formik.values.team_id}
               onChange={formik.handleChange}
-              // setFieldValue={handleInputChange}
-              // value={values.team_id}
-              // error={errors.team_id && touched.team_id ? errors.team_id : null}
-            /> */}
+              onBlur={formik.handleBlur}
+              error={
+                formik.errors.team_id && formik.touched.team_id
+                  ? formik.errors.team_id
+                  : null
+              }
+            />
           </SelectInputWrapper>
           <SelectInputWrapper>
-            {/* <SelectInput
-      name="position"
-      // id="position"
-      // positions={values.position}
-      // setFieldValue={handleInputChange}
-    /> */}
+            <SelectInput
+              options={POSITIONS}
+              name="position_id"
+              value={formik.values.position_id}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={
+                formik.errors.position_id && formik.touched.position_id
+                  ? formik.errors.position_id
+                  : null
+              }
+            />
           </SelectInputWrapper>
           <BottomInputWrapper>
             <InputWrapper>

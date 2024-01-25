@@ -8,10 +8,12 @@ const RadioInput = ({
   onChange = () => {},
   isSecond,
   id,
+  onBlur = () => {},
 }) => {
   return (
     <>
       <Input
+        onBlur={onBlur}
         id={id}
         type="radio"
         name={name}
@@ -20,7 +22,7 @@ const RadioInput = ({
         checked={checked}
         isSecond={isSecond}
       />
-      <Label> {label}</Label>
+      <Label>{label}</Label>
     </>
   );
 };

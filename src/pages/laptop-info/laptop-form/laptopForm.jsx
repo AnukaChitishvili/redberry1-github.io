@@ -16,7 +16,6 @@ import {
   UploadTitle,
   TransparentButtonWrapper,
   ButtonWrapper,
-  // rename
   Wrapper,
   InputContainer,
   InputWrapper,
@@ -39,7 +38,7 @@ const LaptopForm = () => {
 
   const togglePopUp = () => {
     setOpenPopUp((prevState) => !prevState);
-    navigate("/new-laptop/success");
+    console.log("from here");
   };
 
   const navigateToEmployeeInfoPage = () => {
@@ -49,8 +48,8 @@ const LaptopForm = () => {
   const formik = useFormik({
     initialValues: {
       laptopName: "",
-      laptopBrand: [],
-      CPU: [],
+      laptopBrand: "",
+      CPU: "",
       CPU_core: "",
       CPU_flow: "",
       laptopRam: "",
@@ -61,7 +60,9 @@ const LaptopForm = () => {
     },
     validationSchema: validationSchema2,
     onSubmit: (values) => {
-      console.log("this", values);
+      console.log(values);
+      togglePopUp();
+      localStorage.removeItem("values");
     },
   });
 
@@ -75,6 +76,10 @@ const LaptopForm = () => {
   useEffect(() => {
     localStorage.setItem("values", JSON.stringify(formik.values));
   }, [formik.values]);
+
+  const handleWhat = () => {
+    console.log("from here");
+  };
 
   return (
     <Formik>
@@ -91,7 +96,7 @@ const LaptopForm = () => {
         </MobileUploadContainer>
         <Wrapper>
           <InputContainer>
-            <InputWrapper>
+            <InputWrapper isFirst>
               <Input
                 label="ლეპტოპის სახელი"
                 name="laptopName"
@@ -105,7 +110,7 @@ const LaptopForm = () => {
                 }
               />
             </InputWrapper>
-            <SelectInputWrapper>
+            <SelectInputWrapper isFirst>
               <SelectInput
                 options={LAPTOP_BRANDS}
                 name="laptopBrand"
@@ -182,7 +187,15 @@ const LaptopForm = () => {
                 }
               />
               <RadioInputContainer>
-                <RadioInputTitle>მეხსიერების ტიპი</RadioInputTitle>
+                <RadioInputTitle
+                  error={
+                    formik.errors.memoryType && formik.touched.memoryType
+                      ? formik.errors.memoryType
+                      : null
+                  }
+                >
+                  მეხსიერების ტიპი
+                </RadioInputTitle>
                 <RadioInputWrapper>
                   <RadioInput
                     value="SSD"
@@ -191,6 +204,12 @@ const LaptopForm = () => {
                     onChange={formik.handleChange}
                     checked={formik.values.memoryType === "SSD"}
                     label="SSD"
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.errors.memoryType && formik.touched.memoryType
+                        ? formik.errors.memoryType
+                        : null
+                    }
                   />
                   <RadioInput
                     value="HDD"
@@ -200,6 +219,12 @@ const LaptopForm = () => {
                     checked={formik.values.memoryType === "HDD"}
                     label="HDD"
                     isSecond
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.errors.memoryType && formik.touched.memoryType
+                        ? formik.errors.memoryType
+                        : null
+                    }
                   />
                 </RadioInputWrapper>
               </RadioInputContainer>
@@ -237,7 +262,15 @@ const LaptopForm = () => {
             </InputWrapper>
           </InputContainer>
           <RadioInputContainer isLast>
-            <RadioInputTitle>ლეპტოპის მდგომარეობა</RadioInputTitle>
+            <RadioInputTitle
+              error={
+                formik.errors.laptopState && formik.touched.laptopState
+                  ? formik.errors.laptopState
+                  : null
+              }
+            >
+              ლეპტოპის მდგომარეობა
+            </RadioInputTitle>
             <RadioInputWrapper>
               <RadioInput
                 value="ახალი"
@@ -246,6 +279,12 @@ const LaptopForm = () => {
                 onChange={formik.handleChange}
                 checked={formik.values.laptopState === "ახალი"}
                 label="ახალი"
+                onBlur={formik.handleBlur}
+                error={
+                  formik.errors.laptopState && formik.touched.laptopState
+                    ? formik.errors.laptopState
+                    : null
+                }
               />
               <RadioInput
                 value="მეორადი"
@@ -274,7 +313,7 @@ const LaptopForm = () => {
                 type="submit"
                 // onClick={openPopUp}
               />
-              {/* {popUp && <PopUp />} */}
+              {openPopUp && <PopUp togglePopUp={togglePopUp} />}
             </ButtonWrapper>
           </ButtonContainer>
         </Wrapper>

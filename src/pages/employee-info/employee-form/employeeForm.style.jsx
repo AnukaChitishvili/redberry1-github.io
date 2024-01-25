@@ -45,8 +45,6 @@ export const InputWrapper = styled.div`
 export const SelectInputWrapper = styled.div`
   margin-top: 30px;
   width: 100%;
-  // shesacv
-  background-color: red;
   height: 76px;
 `;
 

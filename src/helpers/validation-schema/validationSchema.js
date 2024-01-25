@@ -17,8 +17,8 @@ const validationSchema = yup.object().shape({
     .matches("[a-z0-9]+@redberry.ge", "უნდა მთავრდებოდეს @redberry.ge-თი")
     .required("სავალდებულო ველი"),
   phoneNumber: yup.string().required("სავალდებულო ველი"),
-  // team_id: yup.string().required("სავალდებულო ველი"),
-  // position_id: yup.string().required("სავალდებულო ველი"),
+  team_id: yup.string().required("სავალდებულო ველი"),
+  position_id: yup.string().required("სავალდებულო ველი"),
 });
 
 export default validationSchema;

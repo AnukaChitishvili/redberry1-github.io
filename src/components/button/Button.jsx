@@ -7,9 +7,7 @@ const Button = ({
   isTransparent,
   isLanding,
   isPopUp,
-  onClick = () => {
-    console.log();
-  },
+  onClick = () => {},
 }) => {
   return (
     <Container

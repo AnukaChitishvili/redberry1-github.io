@@ -4,7 +4,7 @@ export const SelectContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  border: none;
+  border: ${({ hasError }) => (hasError ? "1px solid red" : "none")};
   padding: 20px 10px 20px;
   cursor: pointer;
   border-radius: 12px;
@@ -31,8 +31,6 @@ export const Select = styled.select`
 `;
 
 export const ErrorMessage = styled.span`
-  font-size: 14px;
   color: #e52f2f;
-  position: absolute;
-  bottom: -20px;
+  font-size: 14px;
 `;

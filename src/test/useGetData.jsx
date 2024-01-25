@@ -4,6 +4,7 @@ const useGetData = () => {
   const [laptopList, setLaptopList] = useState([]);
   useEffect(() => {
     const retrievedData = localStorage.getItem("values");
+    console.log("camogebuli", retrievedData);
     if (retrievedData) {
       setLaptopList(JSON.parse(retrievedData)); // prevState chavamateb
     }
@@ -15,5 +16,3 @@ const useGetData = () => {
 };
 
 export default useGetData;
-
-// localStorage.removeItem('values')
