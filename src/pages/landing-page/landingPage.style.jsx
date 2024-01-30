@@ -13,6 +13,10 @@ export const Container = styled.div`
   }
 `;
 
+export const Div = styled.div`
+  width: 400px;
+`;
+
 export const StyledLink = styled(Link)`
   cursor: pointer;
   margin: 40px 0;
@@ -55,4 +59,22 @@ export const MobileLandingImage = styled.img`
   @media (min-width: 810px) {
     display: none;
   }
+`;
+
+// Exmaple
+
+export const TestSelect = styled.select`
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid black; */
+  /* outline: 0; */
+  width: 200px;
+  &:after {
+    background: red;
+  }
+`;
+
+export const TestOption = styled.option`
+  background: red;
 `;

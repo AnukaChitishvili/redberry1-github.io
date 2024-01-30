@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Formik, useFormik, Field } from "formik";
+import { Formik, useFormik } from "formik";
 
 import { DataContext } from "../../../context/dataContext";
 import { LAPTOP_BRANDS, CPU } from "../../../test/selectInputData";
@@ -30,15 +30,15 @@ import {
   SelectInputWrapper,
 } from "./laptopForm.style";
 import SelectInput from "../../../components/select-input/SelectInput";
-import { getValue } from "@testing-library/user-event/dist/utils";
+import FileUpload from "../../../test/FileUpload";
 
 const LaptopForm = () => {
   const navigate = useNavigate();
   const [openPopUp, setOpenPopUp] = useState(false);
+  const { laptopList, setLaptopList } = useContext(DataContext);
 
   const togglePopUp = () => {
     setOpenPopUp((prevState) => !prevState);
-    console.log("from here");
   };
 
   const navigateToEmployeeInfoPage = () => {
@@ -49,6 +49,7 @@ const LaptopForm = () => {
     initialValues: {
       laptopName: "",
       laptopBrand: "",
+      laptopImage: [],
       CPU: "",
       CPU_core: "",
       CPU_flow: "",
@@ -60,9 +61,11 @@ const LaptopForm = () => {
     },
     validationSchema: validationSchema2,
     onSubmit: (values) => {
-      console.log(values);
-      togglePopUp();
-      localStorage.removeItem("values");
+      // const newArr = [...laptopList, values];
+      // setLaptopList(newArr);
+      // localStorage.setItem("laptopList", JSON.stringify(newArr));
+      // localStorage.removeItem("values");
+      // togglePopUp();
     },
   });
 
@@ -77,19 +80,10 @@ const LaptopForm = () => {
     localStorage.setItem("values", JSON.stringify(formik.values));
   }, [formik.values]);
 
-  const handleWhat = () => {
-    console.log("from here");
-  };
-
   return (
     <Formik>
       <FormContainer onSubmit={formik.handleSubmit}>
-        <UploadContainer>
-          <UploadTitle>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</UploadTitle>
-          <ButtonWrapper>
-            <Button text="ატვირთე" />
-          </ButtonWrapper>
-        </UploadContainer>
+        <FileUpload />
         <MobileUploadContainer>
           <UploadIconContainer src={UploadIcon} alt="upload" />
           <UploadTitle>ლეპტოპის ფოტოს ატვირთვა</UploadTitle>
@@ -174,7 +168,7 @@ const LaptopForm = () => {
           <SecondSection>
             <InputContainer>
               <Input
-                label="ლეპტოპის RAM (GB)"
+                label="ლეპტოპის RAM"
                 name="laptopRam"
                 placeholder="laptop ram"
                 value={formik.values.laptopRam}
@@ -308,11 +302,7 @@ const LaptopForm = () => {
               />
             </TransparentButtonWrapper>
             <ButtonWrapper>
-              <Button
-                text="დამახსოვრება"
-                type="submit"
-                // onClick={openPopUp}
-              />
+              <Button text="დამახსოვრება" type="submit" />
               {openPopUp && <PopUp togglePopUp={togglePopUp} />}
             </ButtonWrapper>
           </ButtonContainer>

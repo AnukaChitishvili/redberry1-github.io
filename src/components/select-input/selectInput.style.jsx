@@ -34,3 +34,19 @@ export const ErrorMessage = styled.span`
   color: #e52f2f;
   font-size: 14px;
 `;
+
+// export const Option = styled.option`
+//   background: red;
+//   color: blue;
+// `;
+
+// select option {
+//   color: inherit;
+//   background-color: #320a28;
+// }
+// select:focus {
+//   outline: none;
+// }
+// select::-ms-expand {
+//   display: none;
+// }

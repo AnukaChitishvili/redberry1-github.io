@@ -19,7 +19,6 @@ import {
   BottomInputWrapper,
   ButtonWrapper,
 } from "./employeeForm.style";
-import useGetData from "../../../test/useGetData";
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
@@ -36,14 +35,16 @@ const EmployeeForm = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log("onSubmit", values);
-
       navigate("/new-laptop/laptop-info");
-      setLaptopList([values]);
+
+      // const newArr = [...laptopList, values];
+      // setLaptopList(newArr);
+      // navigate("/new-laptop/laptop-info");
+      // localStorage.setItem("laptopList", JSON.stringify(newArr));
+      // localStorage.removeItem("values");
     },
   });
 
-  console.log("renderidan", laptopList);
   useEffect(() => {
     const retrievedData = localStorage.getItem("values");
     if (retrievedData) {

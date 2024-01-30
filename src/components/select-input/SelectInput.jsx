@@ -1,4 +1,9 @@
-import { SelectContainer, Select, ErrorMessage } from "./selectInput.style";
+import {
+  SelectContainer,
+  Select,
+  ErrorMessage,
+  // Option,
+} from "./selectInput.style";
 
 const SelectInput = ({ error, name, id, options, onChange = () => {} }) => {
   return (

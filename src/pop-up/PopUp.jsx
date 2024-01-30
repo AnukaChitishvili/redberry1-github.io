@@ -23,7 +23,6 @@ const PopUp = ({ togglePopUp = () => {}, what = () => {} }) => {
   };
 
   useOutsideClickHandler(popUpRef, () => {
-    console.log("here");
     togglePopUp();
   });
 

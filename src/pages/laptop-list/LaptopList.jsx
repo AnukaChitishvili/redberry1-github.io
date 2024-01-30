@@ -10,7 +10,7 @@ const LaptopList = () => {
   const [cards, setCards] = useState([]);
 
   const navigateToLaptopInfoPage = () => {
-    navigate("/laptop-info");
+    navigate("/new-laptop/laptop-info");
   };
 
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];

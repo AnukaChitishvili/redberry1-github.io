@@ -1,16 +1,15 @@
 import * as yup from "yup";
 
-// მხოლოდ ქართული სიმბოლოები
-// უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
-
 const validationSchema = yup.object().shape({
   firstName: yup
     .string()
     .min(2, "მინიმუმ 2 სიმბოლო")
+    .matches(/^[ა-ჰ]*$/, "მინიმუმ ორი სიმბოლო, ქართული ასოები")
     .required("სავალდებულო ველი"),
   surName: yup
     .string()
     .min(2, "მინიმუმ 2 სიმბოლო")
+    .matches(/^[ა-ჰ]*$/, "მინიმუმ ორი სიმბოლო, ქართული ასოები")
     .required("სავალდებულო ველი"),
   email: yup
     .string()
