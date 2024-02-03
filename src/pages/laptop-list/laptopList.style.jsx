@@ -1,13 +1,42 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
+  //
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  @media (max-width: 810px) {
+    padding: 0 20px;
+    padding-bottom: 10px;
+  }
+`;
+
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 100px 0 250px;
+  margin-top: 60px;
+  width: 100%;
   @media (max-width: 810px) {
-    padding: 0 10px 50px;
+    margin-top: 10px;
+  }
+`;
+
+export const ListWrapper = styled.div`
+  width: 1200px;
+  /* width: 60%; */
+  height: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media (max-width: 810px) {
+    max-width: unset;
+    flex-wrap: unset;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
   }
 `;
 
@@ -18,20 +47,5 @@ export const Title = styled.h2`
   margin-top: 20px;
   @media (max-width: 810px) {
     font-size: 16px;
-  }
-`;
-
-export const ListWrapper = styled.div`
-  display: flex;
-  max-width: 1167px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-  @media (max-width: 810px) {
-    max-width: unset;
-    flex-wrap: unset;
-    flex-direction: column;
-    margin-top: 10px;
-    width: 100%;
   }
 `;

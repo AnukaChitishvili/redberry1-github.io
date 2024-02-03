@@ -34,10 +34,8 @@ export const InfoWrapper = styled.div`
 export const Title = styled.h3`
   color: #000000;
   font-size: 18px;
-  /* margin-top: 30px; */
   @media (max-width: 810px) {
     font-size: 14px;
-    /* margin-top: 15px; */
   }
 `;
 

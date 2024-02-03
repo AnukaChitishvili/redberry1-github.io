@@ -10,7 +10,7 @@ import LaptopList from "./pages/laptop-list/LaptopList";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import LaptopData from "./pages/laptop-data/LaptopData";
 import PopUp from "./pop-up/PopUp";
-import useGetData from "./test/useGetData";
+import useGetData from "./helpers/use-get-data/useGetData";
 
 export const App = () => {
   const { laptopList, setLaptopList } = useGetData();

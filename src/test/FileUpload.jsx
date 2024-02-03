@@ -9,11 +9,19 @@ import {
   ListItem,
   Img,
   ButtonWrapper,
+  Div,
 } from "./fileUpload.style";
 import Button from "../components/button/Button";
 
-const FileUpload = () => {
+const FileUpload = ({ value, setFieldValue }) => {
   const [files, setFiles] = useState([]);
+
+  // const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  //   accept: "image/*",
+  //   onDrop: (acceptedFiles) => {
+  //     setFieldValue("files", acceptedFiles);
+  //   },
+  // });
 
   const onDrop = useCallback((acceptedFiles) => {
     if (acceptedFiles?.length) {
@@ -26,36 +34,19 @@ const FileUpload = () => {
     }
   }, []);
 
-  console.log(files);
-
-  // const removeFile = (name) => {
-  //   setFiles((files) => files.filter((file) => file.name !== name));
-  // };
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
   });
-
-  // tviton iko form shi da li shi file name rat unda?
 
   return (
     <>
       <UploadContainer {...getRootProps()}>
         <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
-        ) : (
-          <Wrapper>
-            <UploadTitle>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</UploadTitle>
-            <ButtonWrapper>
-              <Button type="button" text="ატვირთე" />
-            </ButtonWrapper>
-          </Wrapper>
-        )}
+        {isDragActive ? <p>Drop the files here ...</p> : <div></div>}
         <List>
           {files.map((file) => (
             <ListItem key={file.name}>
-              {file.name}
+              {/* {file.name} */}
               <Img
                 src={file.preview}
                 alt="computer"
@@ -72,3 +63,12 @@ const FileUpload = () => {
 };
 
 export default FileUpload;
+
+{
+  /* <Wrapper>
+<UploadTitle>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</UploadTitle>
+<ButtonWrapper>
+<Button type="button" text="ატვირთე" />
+</ButtonWrapper>
+</Wrapper> */
+}

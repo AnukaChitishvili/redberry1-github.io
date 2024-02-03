@@ -2,12 +2,20 @@ import {
   SelectContainer,
   Select,
   ErrorMessage,
-  // Option,
+  Label,
 } from "./selectInput.style";
 
-const SelectInput = ({ error, name, id, options, onChange = () => {} }) => {
+const SelectInput = ({
+  label,
+  error,
+  name,
+  id,
+  options,
+  onChange = () => {},
+}) => {
   return (
     <>
+      <Label>{label}</Label>
       <SelectContainer hasError={error}>
         <Select name={name} id={id} onChange={onChange}>
           {options.map((option) => {

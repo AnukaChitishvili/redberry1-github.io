@@ -4,18 +4,31 @@ export const FormContainer = styled.form`
   background-color: #ffffff;
   border-radius: 12px;
   margin-top: 25px;
-  padding: 40px 55px;
+  width: 50%;
+  height: auto;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: center;
+  padding: 100px;
   @media (max-width: 810px) {
-    margin-top: 30px;
-    padding: 0 20px 58px;
+    width: 100%;
+    padding: 0;
   }
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
+  width: 100%;
+  @media (max-width: 810px) {
+  }
+`;
+
+export const Div = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 15px;
+  @media (max-width: 810px) {
+  }
 `;
 
 export const InputsContainer = styled.div`
@@ -26,7 +39,7 @@ export const InputsContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
-  width: 410px;
+  width: 100%;
   margin-left: 30px;
   &:first-child {
     margin-left: 0;

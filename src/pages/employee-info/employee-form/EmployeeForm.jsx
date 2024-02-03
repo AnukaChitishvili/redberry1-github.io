@@ -1,17 +1,18 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useFormik, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../../context/dataContext";
 import validationSchema from "../../../helpers/validation-schema/validationSchema";
-import { TEAMS, POSITIONS } from "../../../data/data";
+import { TEAMS, POSITIONS } from "../../../select-input-data/select-input-data";
+import CustomSelectInput from "../../../test/CustomSelectInput";
 import Input from "../../../components/input/Input";
-import SelectInput from "../../../components/select-input/SelectInput";
 import Button from "../../../components/button/Button";
 
 import {
   FormContainer,
   Wrapper,
+  Div,
   InputsContainer,
   InputContainer,
   InputWrapper,
@@ -35,8 +36,8 @@ const EmployeeForm = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      navigate("/new-laptop/laptop-info");
-
+      console.log("values", values);
+      // navigate("/new-laptop/laptop-info");
       // const newArr = [...laptopList, values];
       // setLaptopList(newArr);
       // navigate("/new-laptop/laptop-info");
@@ -56,114 +57,111 @@ const EmployeeForm = () => {
     localStorage.setItem("values", JSON.stringify(formik.values));
   }, [formik.values]);
 
+  console.log("errors", formik.errors);
+  console.log("team error", formik.errors.team_id);
+
   return (
     <Formik>
       <FormContainer onSubmit={formik.handleSubmit}>
-        <Wrapper>
-          <InputsContainer>
-            <InputContainer>
+        <Div>
+          <Wrapper>
+            <InputsContainer>
+              <InputContainer>
+                <InputWrapper>
+                  <Input
+                    name="firstName"
+                    label="სახელი"
+                    placeholder="ანუკა"
+                    value={formik.values.firstName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.errors.firstName && formik.touched.firstName
+                        ? formik.errors.firstName
+                        : null
+                    }
+                  />
+                </InputWrapper>
+              </InputContainer>
+              <InputContainer>
+                <InputWrapper>
+                  <Input
+                    name="surName"
+                    label="გვარი"
+                    placeholder="ჩიტიშვილი"
+                    value={formik.values.surName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.errors.surName && formik.touched.surName
+                        ? formik.errors.surName
+                        : null
+                    }
+                  />
+                </InputWrapper>
+              </InputContainer>
+            </InputsContainer>
+            <SelectInputWrapper>
+              <CustomSelectInput
+                value={formik.values.team_id}
+                options={TEAMS}
+                placeholder="თიმი"
+                onChange={(value) => formik.setFieldValue("team_id", value)}
+                onBlur={formik.handleBlur}
+              />
+              {/* {formik.errors.team_id && formik.touched.team_id
+                ? formik.errors.team_id
+                : "jandaba"} */}
+            </SelectInputWrapper>
+            <SelectInputWrapper>
+              <CustomSelectInput
+                value={formik.values.position_id}
+                options={POSITIONS}
+                placeholder="პოზიცია"
+                onChange={(value) => formik.setFieldValue("position_id", value)}
+              />
+            </SelectInputWrapper>
+            <BottomInputWrapper>
               <InputWrapper>
                 <Input
-                  name="firstName"
-                  label="სახელი"
-                  placeholder="ანუკა"
-                  value={formik.values.firstName}
+                  type="email"
+                  name="email"
+                  label="მეილი"
+                  placeholder="AnukaChiti1@redberry.ge"
+                  value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   error={
-                    formik.errors.firstName && formik.touched.firstName
-                      ? formik.errors.firstName
+                    formik.errors.email && formik.touched.email
+                      ? formik.errors.email
                       : null
                   }
                 />
               </InputWrapper>
-            </InputContainer>
-            <InputContainer>
+            </BottomInputWrapper>
+            <BottomInputWrapper>
               <InputWrapper>
                 <Input
-                  name="surName"
-                  label="გვარი"
-                  placeholder="ჩიტიშვილი"
-                  value={formik.values.surName}
+                  type="number"
+                  name="phoneNumber"
+                  label="ტელეფონის ნომერი"
+                  placeholder="555 900 655"
+                  value={formik.values.phoneNumber}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   error={
-                    formik.errors.surName && formik.touched.surName
-                      ? formik.errors.surName
+                    formik.errors.phoneNumber && formik.touched.phoneNumber
+                      ? formik.errors.phoneNumber
                       : null
                   }
                 />
               </InputWrapper>
-            </InputContainer>
-          </InputsContainer>
-          <SelectInputWrapper>
-            <SelectInput
-              options={TEAMS}
-              name="team_id"
-              value={formik.values.team_id}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={
-                formik.errors.team_id && formik.touched.team_id
-                  ? formik.errors.team_id
-                  : null
-              }
-            />
-          </SelectInputWrapper>
-          <SelectInputWrapper>
-            <SelectInput
-              options={POSITIONS}
-              name="position_id"
-              value={formik.values.position_id}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={
-                formik.errors.position_id && formik.touched.position_id
-                  ? formik.errors.position_id
-                  : null
-              }
-            />
-          </SelectInputWrapper>
-          <BottomInputWrapper>
-            <InputWrapper>
-              <Input
-                type="email"
-                name="email"
-                label="მეილი"
-                placeholder="AnukaChiti1@redberry.ge"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.errors.email && formik.touched.email
-                    ? formik.errors.email
-                    : null
-                }
-              />
-            </InputWrapper>
-          </BottomInputWrapper>
-          <BottomInputWrapper>
-            <InputWrapper>
-              <Input
-                type="number"
-                name="phoneNumber"
-                label="ტელეფონის ნომერი"
-                placeholder="555 900 655"
-                value={formik.values.phoneNumber}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.errors.phoneNumber && formik.touched.phoneNumber
-                    ? formik.errors.phoneNumber
-                    : null
-                }
-              />
-            </InputWrapper>
-          </BottomInputWrapper>
-        </Wrapper>
-        <ButtonWrapper>
-          <Button text="შემდეგი" type="submit" />
-        </ButtonWrapper>
+            </BottomInputWrapper>
+          </Wrapper>
+          <ButtonWrapper>
+            <Button text="შემდეგი" type="submit" />
+          </ButtonWrapper>
+        </Div>
       </FormContainer>
     </Formik>
   );

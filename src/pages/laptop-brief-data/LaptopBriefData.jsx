@@ -12,6 +12,7 @@ import {
 
 const LaptopBriefData = () => {
   // should be from back dynamic
+  // useContext
 
   return (
     <Container>

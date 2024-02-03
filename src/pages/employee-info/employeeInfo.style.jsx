@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 810px) {
-    padding-top: 50px;
+    padding-top: 20px;
   }
 `;
 
@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 export const TitleWrapper = styled.div`

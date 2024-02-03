@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import LaptopInfo from "../laptop-brief-data/LaptopBriefData";
+import LaptopBriefData from "../laptop-brief-data/LaptopBriefData";
 import BackwardButton from "../../components/backward-button/BackwardButton";
-import { Container, ListWrapper, Title } from "./laptopList.style";
+import { Container, Wrapper, ListWrapper, Title } from "./laptopList.style";
 
 const LaptopList = () => {
   const navigate = useNavigate();
@@ -26,13 +26,14 @@ const LaptopList = () => {
   return (
     <Container>
       <BackwardButton onClick={navigateToLaptopInfoPage} />
-      <Title>ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ</Title>
-      {cards}
-      <ListWrapper>
-        {arr.map((item) => (
-          <LaptopInfo />
-        ))}
-      </ListWrapper>
+      <Wrapper>
+        <Title>ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ</Title>
+        <ListWrapper>
+          {arr.map((item) => (
+            <LaptopBriefData />
+          ))}
+        </ListWrapper>
+      </Wrapper>
     </Container>
   );
 };

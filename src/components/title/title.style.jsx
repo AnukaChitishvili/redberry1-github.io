@@ -25,9 +25,9 @@ export const MobileTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  /* position: absolute;
   top: 16px;
-  right: ${({ isFirstPage }) => (isFirstPage ? "80px" : "51px")};
+  right: ${({ isFirstPage }) => (isFirstPage ? "80px" : "51px")}; */
   @media (min-width: 810px) {
     display: none;
   }
@@ -37,7 +37,6 @@ export const TitleTextMobile = styled.h2`
   font-size: 16px;
   color: #000000;
   margin-bottom: 5px;
-  /* font-family: */
 `;
 
 export const Page = styled.span`

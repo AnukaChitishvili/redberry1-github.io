@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BackwardButton from "../../components/backward-button/BackwardButton";
 import EclipseLogo from "../../components/eclipse-logo/EclipseLogo";
 import Title from "../../components/title/Title";
-import LaptopForm from "./laptop-form/laptopForm";
+import LaptopForm from "./laptop-form/LaptopForm";
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
   EclipseLogoWrapper,
 } from "./laptopInfo.style";
 
-const LaptopInfo = () => {
+const LaptopBriefData = () => {
   const navigate = useNavigate();
 
   const navigateToEmployeesFormPage = () => {
@@ -35,4 +35,4 @@ const LaptopInfo = () => {
   );
 };
 
-export default LaptopInfo;
+export default LaptopBriefData;

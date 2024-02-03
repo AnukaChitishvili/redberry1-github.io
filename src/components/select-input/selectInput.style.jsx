@@ -9,6 +9,7 @@ export const SelectContainer = styled.div`
   cursor: pointer;
   border-radius: 12px;
   background-color: #ebebeb;
+  margin-top: 30px;
   &:after {
     content: "";
     width: 20px;
@@ -35,18 +36,9 @@ export const ErrorMessage = styled.span`
   font-size: 14px;
 `;
 
-// export const Option = styled.option`
-//   background: red;
-//   color: blue;
-// `;
-
-// select option {
-//   color: inherit;
-//   background-color: #320a28;
-// }
-// select:focus {
-//   outline: none;
-// }
-// select::-ms-expand {
-//   display: none;
-// }
+export const Label = styled.label`
+  font-size: 18px;
+  color: transparent;
+  margin-bottom: 5px;
+  min-width: 242px;
+`;

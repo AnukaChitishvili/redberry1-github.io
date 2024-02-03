@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useOutsideClickHandler from "../helpers/other/outsideClickHandler";
+import useOutsideClickHandler from "../helpers/outside-click-handler/outsideClickHandler";
 import {
   Container,
   PopUpWrapper,

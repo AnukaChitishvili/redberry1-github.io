@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
 export const UploadContainer = styled.div`
-  width: 878px;
+  width: 100%;
   height: 400px;
   background-color: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: 18px;
   border: 1px dashed #62a1eb;
   margin-bottom: 30px;
@@ -35,21 +31,26 @@ export const UploadTitle = styled.h3`
 export const List = styled.ul`
   list-style-type: none;
   width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 18px;
 `;
 
 export const ListItem = styled.li`
   width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 `;
 
 export const ButtonWrapper = styled.div`
   width: 233px;
 `;
 
-//
-
 export const Img = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border-radius: 18px;
   background-repeat: no-repeat;
 `;

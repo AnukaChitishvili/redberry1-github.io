@@ -28,6 +28,7 @@ const validationSchema2 = yup.object().shape({
     .required("სავალდებულო ველი"),
   memoryType: yup.string().required("სავალდებულო ველი"),
   laptopState: yup.string().required("სავალდებულო ველი"),
+  files: yup.mixed().required("rekvared"),
 });
 
 export default validationSchema2;

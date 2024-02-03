@@ -19,10 +19,13 @@ const handleColorType = (color) => {
   }
 };
 
-export const Label = styled.label`
+// label ???
+
+export const Label = styled.p`
   font-size: 18px;
   color: ${({ color }) => handleColorType(color)};
   margin-bottom: 5px;
+  min-width: 242px;
 `;
 
 export const InputWrapper = styled.input`
