@@ -23,52 +23,57 @@ const FileUpload = ({ value, setFieldValue }) => {
   //   },
   // });
 
-  const onDrop = useCallback((acceptedFiles) => {
+  // const onDrop = useCallback((acceptedFiles) => {
+  //   if (acceptedFiles?.length) {
+  //     setFieldValue("files", acceptedFiles[0]);
+  //     setFiles((prevFiles) => [
+  //       ...prevFiles,
+  //       ...acceptedFiles.map((file) =>
+  //         Object.assign(file, { preview: URL.createObjectURL(file) })
+  //       ),
+  //     ]);
+  //   }
+  // }, []);
+  const onDrop = (acceptedFiles) => {
+    console.log("acceptedFiles", acceptedFiles);
     if (acceptedFiles?.length) {
-      setFiles((prevFiles) => [
-        ...prevFiles,
-        ...acceptedFiles.map((file) =>
-          Object.assign(file, { preview: URL.createObjectURL(file) })
-        ),
-      ]);
+      setFiles(
+        Object.assign(acceptedFiles[0], {
+          preview: URL.createObjectURL(acceptedFiles[0]),
+        })
+      );
     }
-  }, []);
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
+    multiple: false,
   });
 
+  console.log("new", files);
+
   return (
-    <>
-      <UploadContainer {...getRootProps()}>
-        <input {...getInputProps()} />
-        {isDragActive ? <p>Drop the files here ...</p> : <div></div>}
-        <List>
-          {files.map((file) => (
-            <ListItem key={file.name}>
-              {/* {file.name} */}
-              <Img
-                src={file.preview}
-                alt="computer"
-                onLoad={() => {
-                  URL.revokeObjectURL(file.preview);
-                }}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </UploadContainer>
-    </>
+    <UploadContainer {...getRootProps()}>
+      <input {...getInputProps()} />
+      {isDragActive ? <p>Drop the files here ...</p> : <div>Click</div>}
+      <List>{<img src={files.preview} />}</List>
+    </UploadContainer>
   );
 };
 
 export default FileUpload;
 
-{
-  /* <Wrapper>
-<UploadTitle>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</UploadTitle>
-<ButtonWrapper>
-<Button type="button" text="ატვირთე" />
-</ButtonWrapper>
-</Wrapper> */
-}
+// {
+//   files.map((file) => (
+//     <ListItem key={file.name}>
+//       {/* {file.name} */}
+//       <Img
+//         src={file.preview}
+//         alt="computer"
+//         onLoad={() => {
+//           URL.revokeObjectURL(file.preview);
+//         }}
+//       />
+//     </ListItem>
+//   ));
+// }

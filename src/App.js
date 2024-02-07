@@ -1,5 +1,3 @@
-// 390x844
-// დესკტოპზე (1920x1080)
 import { Routes, Route } from "react-router-dom";
 
 import { DataContext } from "./context/dataContext";

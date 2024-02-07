@@ -1,27 +1,22 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form`
-  /* width: 50%; */
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  // casahshleli
-  width: 700px;
-  height: 700px;
   display: flex;
   justify-content: center;
-  padding: 100px;
-  /* padding: 68px 174px 45px; */
+  padding: 68px 100px;
   border-radius: 18px;
   @media (max-width: 810px) {
     padding: 0 16px;
     margin: 0;
+    width: 100%;
+    margin-top: 20px;
   }
 `;
-
-//
 
 export const UploadTitle = styled.h3`
   color: #4386a9;
@@ -31,6 +26,15 @@ export const UploadTitle = styled.h3`
   text-align: center;
   @media (max-width: 810px) {
     font-size: 16px;
+  }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  @media (max-width: 810px) {
+    width: 100%;
   }
 `;
 
@@ -45,8 +49,15 @@ export const InputContainer = styled.div`
   }
 `;
 
+export const CpuWrapper = styled.div`
+  width: ${({ isSelect }) => (isSelect ? "200px" : "170px")};
+  @media (max-width: 810px) {
+    width: 100%;
+  }
+`;
+
 export const InputWrapper = styled.div`
-  width: 45%;
+  width: 300px;
   @media (max-width: 810px) {
     margin-left: 0;
     margin-top: 19px;
@@ -55,33 +66,23 @@ export const InputWrapper = styled.div`
 `;
 
 export const SelectInputWrapper = styled.div`
-  width: 45%;
-  /* margin-top: 33px;
-  width: ${({ isFirst }) => (isFirst ? "455px" : "100%")};
-  height: 76px;
-  margin-left: ${({ isFirst }) => (isFirst ? "30px" : "0")}; */
-`;
-
-export const RadioInputContainer = styled.div`
-  width: 100%;
-  margin-left: ${({ isLast }) => (isLast ? "0" : "50px")};
-  margin-top: ${({ isLast }) => (isLast ? "40px" : "0")};
+  width: 300px;
+  margin-left: 50px;
   @media (max-width: 810px) {
-    margin-top: 36px;
-    margin-left: 19px;
+    width: 100%;
+    margin-left: 0;
   }
 `;
 
-export const RadioInputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 30px;
-`;
+export const RadioInputContainer = styled.div``;
 
 export const RadioInputTitle = styled.h3`
   color: ${({ error }) => (error ? "red" : "black")};
   font-size: 18px;
   margin: 0;
+  @media (max-width: 810px) {
+    font-size: 16px;
+  }
 `;
 
 export const Border = styled.div`
@@ -136,4 +137,46 @@ export const UploadIconContainer = styled.img`
   width: 54px;
   height: 54px;
   margin-top: 20px;
+`;
+
+//
+
+export const Div = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 30px;
+  @media (max-width: 810px) {
+    flex-direction: column;
+    align-items: unset;
+  }
+`;
+
+export const Wrapa = styled.div`
+  margin-left: 100px;
+  @media (max-width: 810px) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0;
+  }
+`;
+
+export const RadioInputWrapper = styled.div`
+  display: flex;
+  margin-top: 40px;
+  @media (max-width: 810px) {
+    /* flex-direction: flex-start; */
+  }
+`;
+
+export const Divv = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+  flex-direction: column;
+
+  align-items: flex-start;
 `;

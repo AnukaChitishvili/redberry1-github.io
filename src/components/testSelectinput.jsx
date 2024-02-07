@@ -8,8 +8,10 @@ const TestSelectinput = () => {
     setLoading(true);
     fetch("http://universities.hipolabs.com/search?country=United+States")
       .then((response) => response.json())
-      .then((data) => setTeams(data));
-    setLoading(false); // ak rato ara?
+      .then((data) => {
+        setTeams(data);
+        setLoading(false);
+      });
   }, []);
 
   let isValid = teams.length > 0;

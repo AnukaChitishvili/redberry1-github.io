@@ -14,6 +14,9 @@ export const Container = styled.div`
 
 export const TitleWrapper = styled.div`
   margin-top: 80px;
+  @media (max-width: 810px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Wrapper = styled.div`

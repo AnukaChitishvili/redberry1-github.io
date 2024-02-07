@@ -23,7 +23,7 @@ import {
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
-  const { laptopList, setLaptopList } = useContext(DataContext);
+  // const { laptopList, setLaptopList } = useContext(DataContext);
 
   const formik = useFormik({
     initialValues: {
@@ -37,28 +37,22 @@ const EmployeeForm = () => {
     validationSchema,
     onSubmit: (values) => {
       console.log("values", values);
-      // navigate("/new-laptop/laptop-info");
-      // const newArr = [...laptopList, values];
-      // setLaptopList(newArr);
-      // navigate("/new-laptop/laptop-info");
-      // localStorage.setItem("laptopList", JSON.stringify(newArr));
-      // localStorage.removeItem("values");
+      navigate("/new-laptop/laptop-info");
     },
   });
 
   useEffect(() => {
-    const retrievedData = localStorage.getItem("values");
+    const retrievedData = localStorage.getItem("employeeForm");
     if (retrievedData) {
       formik.setValues(JSON.parse(retrievedData));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("values", JSON.stringify(formik.values));
+    localStorage.setItem("employeeForm", JSON.stringify(formik.values));
   }, [formik.values]);
 
-  console.log("errors", formik.errors);
-  console.log("team error", formik.errors.team_id);
+  console.log("ksjdhgkshdgk ", formik.errors);
 
   return (
     <Formik>

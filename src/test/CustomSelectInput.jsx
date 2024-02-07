@@ -1,6 +1,6 @@
 import Select from "react-select";
 
-import { ErrorMessage } from "./customSelectInput.style";
+import { ErrorMessage, Label } from "./customSelectInput.style";
 
 const CustomSelectInput = ({
   options,
@@ -9,6 +9,7 @@ const CustomSelectInput = ({
   value,
   error,
   onBlur,
+  label,
 }) => {
   const styles = {
     control: (styles) => ({
@@ -38,6 +39,7 @@ const CustomSelectInput = ({
 
   return (
     <>
+      <Label>{label}</Label>
       <Select
         value={defaultValue(options, value)}
         options={options}

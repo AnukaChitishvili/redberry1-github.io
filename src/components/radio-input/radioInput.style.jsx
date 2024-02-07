@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Input = styled.input`
   margin: 0;
   margin-left: ${({ isSecond }) => (isSecond ? "30px" : "0")};
+  width: 100%;
 `;
 
 export const Label = styled.label`

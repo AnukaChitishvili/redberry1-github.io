@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useOutsideClickHandler from "../helpers/outside-click-handler/outsideClickHandler";
@@ -11,8 +11,11 @@ import {
 } from "./popUp.style";
 import Button from "../components/button/Button";
 import PopUpIcon from "../assets/icons/Pop-up-icon.svg";
+import { DataContext } from "../context/dataContext";
 
 const PopUp = ({ togglePopUp = () => {}, what = () => {} }) => {
+  const { laptopList } = useContext(DataContext);
+
   const popUpRef = useRef();
   const navigate = useNavigate();
   const navigateToLaptopList = () => {

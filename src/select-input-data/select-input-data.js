@@ -51,4 +51,8 @@ export const LAPTOP_BRANDS = [
   },
 ];
 
-export const CPU = ["Cpu", "2.3", "4.5", "6.6"];
+export const CPU = [
+  { value: "2.3", label: "2.3" },
+  { value: "4.5", label: "4.5" },
+  { value: "6.6", label: "6.6" },
+];

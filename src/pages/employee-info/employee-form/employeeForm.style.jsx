@@ -4,11 +4,9 @@ export const FormContainer = styled.form`
   background-color: #ffffff;
   border-radius: 12px;
   margin-top: 25px;
-  width: 50%;
-  height: auto;
   display: flex;
   justify-content: center;
-  padding: 100px;
+  padding: 90px 100px;
   @media (max-width: 810px) {
     width: 100%;
     padding: 0;
@@ -33,6 +31,7 @@ export const Div = styled.div`
 
 export const InputsContainer = styled.div`
   display: flex;
+  width: 100%;
   @media (max-width: 810px) {
     flex-direction: column;
   }

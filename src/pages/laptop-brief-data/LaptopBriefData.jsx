@@ -1,6 +1,8 @@
 // import { useNavigate } from "react-router-dom";
-import ComputerImg from "../../assets/imgs/Computer.svg";
+import { useContext } from "react";
 
+import { DataContext } from "../../context/dataContext";
+import ComputerImg from "../../assets/imgs/Computer.svg";
 import {
   Container,
   Img,
@@ -11,18 +13,23 @@ import {
 } from "./laptopBriefData.style";
 
 const LaptopBriefData = () => {
-  // should be from back dynamic
-  // useContext
+  const { laptopList } = useContext(DataContext);
 
   return (
-    <Container>
-      <Img src={ComputerImg} alt="computer" />
-      <InfoWrapper>
-        <Title>ირინე ჩანქსელიანი</Title>
-        <SubTitle>Pentium II</SubTitle>
-        <StyledLink to="/laptop-data">მეტის ნახვა</StyledLink>
-      </InfoWrapper>
-    </Container>
+    <div>
+      {laptopList.map((item) => {
+        return (
+          <Container>
+            <Img src={ComputerImg} alt="computer" />
+            <InfoWrapper>
+              <Title>{laptopList[0].firstName}</Title>
+              <SubTitle>Pentium II</SubTitle>
+              <StyledLink to="/laptop-data">მეტის ნახვა</StyledLink>
+            </InfoWrapper>
+          </Container>
+        );
+      })}
+    </div>
   );
 };
 
