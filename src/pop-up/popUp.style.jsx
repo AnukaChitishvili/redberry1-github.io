@@ -10,6 +10,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 810px) {
+    background-color: white;
+  }
 `;
 
 export const PopUpWrapper = styled.div`
@@ -20,7 +23,6 @@ export const PopUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* z-index: 100; */
   @media (max-width: 810px) {
     width: 100%;
     height: 100vh;

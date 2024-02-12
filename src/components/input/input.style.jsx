@@ -19,8 +19,6 @@ const handleColorType = (color) => {
   }
 };
 
-// label ???
-
 export const Label = styled.p`
   font-size: 18px;
   color: ${({ color }) => handleColorType(color)};
@@ -29,6 +27,9 @@ export const Label = styled.p`
 `;
 
 export const InputWrapper = styled.input`
+  ::-webkit-calendar-picker-indicator {
+    margin-right: 15px;
+  }
   width: 100%;
   height: 60px;
   border: ${({ error }) =>
@@ -36,8 +37,8 @@ export const InputWrapper = styled.input`
   border-radius: 12px;
   padding-left: 10px;
   margin-top: 10px;
+
   @media (max-width: 810px) {
-    /* margin-top: 19px; */
     height: 60px;
   }
 `;
@@ -46,5 +47,5 @@ export const ErrorMessage = styled.span`
   font-size: 14px;
   color: #e52f2f;
   position: absolute;
-  bottom: -20px;
+  bottom: -23px;
 `;

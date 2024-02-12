@@ -7,15 +7,23 @@ export const UploadContainer = styled.div`
   border-radius: 18px;
   border: 1px dashed #62a1eb;
   margin-bottom: 30px;
+  position: relative;
   @media (max-width: 810px) {
-    display: none;
+    /* display: none; */
+    height: 200px;
+    width: 90%;
+    margin-top: 20px;
   }
 `;
 
 export const Wrapper = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  @media (max-width: 810px) {
+  }
 `;
 
 export const UploadTitle = styled.h3`
@@ -53,4 +61,11 @@ export const Img = styled.img`
   height: 100%;
   border-radius: 18px;
   background-repeat: no-repeat;
+`;
+
+export const ErrorMessage = styled.span`
+  font-size: 14px;
+  color: #e52f2f;
+  position: absolute;
+  bottom: -30px;
 `;

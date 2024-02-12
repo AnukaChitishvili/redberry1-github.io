@@ -13,9 +13,7 @@ import Button from "../components/button/Button";
 import PopUpIcon from "../assets/icons/Pop-up-icon.svg";
 import { DataContext } from "../context/dataContext";
 
-const PopUp = ({ togglePopUp = () => {}, what = () => {} }) => {
-  const { laptopList } = useContext(DataContext);
-
+const PopUp = ({ togglePopUp = () => {} }) => {
   const popUpRef = useRef();
   const navigate = useNavigate();
   const navigateToLaptopList = () => {

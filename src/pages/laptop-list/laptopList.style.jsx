@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  //
   display: flex;
   justify-content: center;
   padding-bottom: 100px;
@@ -25,7 +24,6 @@ export const Wrapper = styled.div`
 
 export const ListWrapper = styled.div`
   width: 1200px;
-  /* width: 60%; */
   height: auto;
   margin-top: 50px;
   display: flex;

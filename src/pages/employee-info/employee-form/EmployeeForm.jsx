@@ -1,18 +1,17 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useFormik, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 
-import { DataContext } from "../../../context/dataContext";
 import validationSchema from "../../../helpers/validation-schema/validationSchema";
 import { TEAMS, POSITIONS } from "../../../select-input-data/select-input-data";
-import CustomSelectInput from "../../../test/CustomSelectInput";
+import CustomSelectInput from "../../../components/custom-select-input/CustomSelectInput";
 import Input from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
 
 import {
   FormContainer,
   Wrapper,
-  Div,
+  ContentWrapper,
   InputsContainer,
   InputContainer,
   InputWrapper,
@@ -23,7 +22,6 @@ import {
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
-  // const { laptopList, setLaptopList } = useContext(DataContext);
 
   const formik = useFormik({
     initialValues: {
@@ -31,12 +29,12 @@ const EmployeeForm = () => {
       surName: "",
       email: "",
       phoneNumber: "",
-      team_id: "",
-      position_id: "",
+      teamId: "",
+      positionId: "",
     },
     validationSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
-      console.log("values", values);
       navigate("/new-laptop/laptop-info");
     },
   });
@@ -52,12 +50,10 @@ const EmployeeForm = () => {
     localStorage.setItem("employeeForm", JSON.stringify(formik.values));
   }, [formik.values]);
 
-  console.log("ksjdhgkshdgk ", formik.errors);
-
   return (
     <Formik>
       <FormContainer onSubmit={formik.handleSubmit}>
-        <Div>
+        <ContentWrapper>
           <Wrapper>
             <InputsContainer>
               <InputContainer>
@@ -97,22 +93,30 @@ const EmployeeForm = () => {
             </InputsContainer>
             <SelectInputWrapper>
               <CustomSelectInput
-                value={formik.values.team_id}
+                value={formik.values.teamId}
                 options={TEAMS}
                 placeholder="თიმი"
-                onChange={(value) => formik.setFieldValue("team_id", value)}
+                onChange={(value) => formik.setFieldValue("teamId", value)}
                 onBlur={formik.handleBlur}
+                error={
+                  formik.errors.teamId?.value && formik.touched.teamId
+                    ? formik.errors.teamId?.value
+                    : null
+                }
               />
-              {/* {formik.errors.team_id && formik.touched.team_id
-                ? formik.errors.team_id
-                : "jandaba"} */}
             </SelectInputWrapper>
             <SelectInputWrapper>
               <CustomSelectInput
-                value={formik.values.position_id}
+                value={formik.values.positionId}
                 options={POSITIONS}
                 placeholder="პოზიცია"
-                onChange={(value) => formik.setFieldValue("position_id", value)}
+                onChange={(value) => formik.setFieldValue("positionId", value)}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.errors.positionId?.value && formik.touched.positionId
+                    ? formik.errors.positionId?.value
+                    : null
+                }
               />
             </SelectInputWrapper>
             <BottomInputWrapper>
@@ -155,7 +159,7 @@ const EmployeeForm = () => {
           <ButtonWrapper>
             <Button text="შემდეგი" type="submit" />
           </ButtonWrapper>
-        </Div>
+        </ContentWrapper>
       </FormContainer>
     </Formik>
   );

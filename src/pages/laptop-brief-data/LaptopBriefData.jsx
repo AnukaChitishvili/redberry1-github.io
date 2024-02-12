@@ -1,8 +1,6 @@
-// import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import { DataContext } from "../../context/dataContext";
-import ComputerImg from "../../assets/imgs/Computer.svg";
 import {
   Container,
   Img,
@@ -15,21 +13,25 @@ import {
 const LaptopBriefData = () => {
   const { laptopList } = useContext(DataContext);
 
+  const src = localStorage.getItem("image");
+
   return (
-    <div>
-      {laptopList.map((item) => {
+    <>
+      {laptopList.map((item, index) => {
         return (
-          <Container>
-            <Img src={ComputerImg} alt="computer" />
+          <Container key={index}>
+            <Img src={src} alt="computer" />
             <InfoWrapper>
-              <Title>{laptopList[0].firstName}</Title>
-              <SubTitle>Pentium II</SubTitle>
+              <Title>
+                {item.firstName} {item.surName}
+              </Title>
+              <SubTitle>{item.laptopName}</SubTitle>
               <StyledLink to="/laptop-data">მეტის ნახვა</StyledLink>
             </InfoWrapper>
           </Container>
         );
       })}
-    </div>
+    </>
   );
 };
 

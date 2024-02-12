@@ -12,34 +12,25 @@ import PopUp from "../../../pop-up/PopUp";
 import Button from "../../../components/button/Button";
 import Input from "../../../components/input/Input";
 import RadioInput from "../../../components/radio-input/RadioInput";
-import UploadIcon from "../../../assets/icons/Camera-icon.svg";
 import {
   FormContainer,
-  // UploadContainer,
   Wrapper,
-  UploadTitle,
   TransparentButtonWrapper,
   ButtonWrapper,
   CpuWrapper,
   InputContainer,
   InputWrapper,
-  RadioInputContainer,
   RadioInputWrapper,
   RadioInputTitle,
   Border,
-  SecondSection,
   ButtonContainer,
-  MobileUploadContainer,
-  UploadIconContainer,
   SelectInputWrapper,
-  Div,
-  Divv,
-  Wrapa,
-  Divvv,
+  RamWrapper,
+  StateWrapper,
+  MemoryWrapper,
 } from "./laptopForm.style";
-import SelectInput from "../../../components/select-input/SelectInput";
-import FileUpload from "../../../test/FileUpload";
-import CustomSelectInput from "../../../test/CustomSelectInput";
+import FileUpload from "../../../components/file-upload/FileUpload";
+import CustomSelectInput from "../../../components/custom-select-input/CustomSelectInput";
 
 const LaptopForm = () => {
   const navigate = useNavigate();
@@ -59,7 +50,6 @@ const LaptopForm = () => {
       laptopName: "",
       laptopBrand: "",
       files: "",
-      // laptopImage: [],
       CPU: "",
       CPU_core: "",
       CPU_flow: "",
@@ -69,17 +59,17 @@ const LaptopForm = () => {
       laptopPrice: "",
       laptopState: "",
     },
-    // validationSchema: validationSchema2,
+    enableReinitialize: true,
+    validationSchema: validationSchema2,
     onSubmit: (values) => {
       const prevPageData = localStorage.getItem("employeeForm");
+      const parsedPrevPageData = JSON.parse(prevPageData);
       setLaptopList((prevState) => {
-        console.log("prevState", prevState);
-        console.log("prevPageData", prevPageData);
-        console.log("values", values);
-        return [...prevState, { ...JSON.parse(prevPageData), ...values }];
+        return [...prevState, { ...parsedPrevPageData, ...values }];
       });
-
-      navigate("/new-laptop/success");
+      localStorage.removeItem("laptopForm");
+      localStorage.removeItem("employeeForm");
+      togglePopUp();
     },
   });
 
@@ -94,16 +84,17 @@ const LaptopForm = () => {
     localStorage.setItem("laptopForm", JSON.stringify(formik.values));
   }, [formik.values]);
 
-  console.log("values", formik.values);
-  console.log("errors", formik.errors);
-  console.log("touched", formik.touched);
-
   return (
     <Formik>
       <FormContainer onSubmit={formik.handleSubmit}>
         <FileUpload
           value={formik.values.files}
           setFieldValue={formik.setFieldValue}
+          error={
+            formik.errors.files && formik.touched.files
+              ? formik.errors.files
+              : null
+          }
         />
         <Wrapper>
           <InputContainer>
@@ -125,10 +116,16 @@ const LaptopForm = () => {
             <SelectInputWrapper>
               <CustomSelectInput
                 value={formik.values.laptopBrand}
-                placeholder="Mac"
+                placeholder="LaptopBrand"
                 onChange={(value) => formik.setFieldValue("laptopBrand", value)}
                 options={LAPTOP_BRANDS}
                 label="transparent"
+                onBlur={formik.handleBlur}
+                error={
+                  formik.errors.laptopBrand?.value && formik.touched.laptopBrand
+                    ? formik.errors.laptopBrand?.value
+                    : null
+                }
               />
             </SelectInputWrapper>
           </InputContainer>
@@ -141,6 +138,12 @@ const LaptopForm = () => {
                 placeholder="Cpu"
                 onChange={(value) => formik.setFieldValue("CPU", value)}
                 label="transparent"
+                onBlur={formik.handleBlur}
+                error={
+                  formik.errors.CPU?.value && formik.touched.CPU
+                    ? formik.errors.CPU?.value
+                    : null
+                }
               />
             </CpuWrapper>
             <CpuWrapper>
@@ -174,67 +177,65 @@ const LaptopForm = () => {
               />
             </CpuWrapper>
           </InputContainer>
-          <Div>
+          <RamWrapper>
             <InputWrapper>
               <Input
-              // label="ლეპტოპის RAM"
-              // name="165"
-              // placeholder="laptop ram"
-              // value={formik.values.laptopRam}
-              // onChange={formik.handleChange}
-              // onBlur={formik.handleBlur}
-              // error={
-              //   formik.errors.laptopRam && formik.touched.laptopRam
-              //     ? formik.errors.laptopRam
-              //     : null
-              // }
+                label="ლეპტოპის RAM"
+                name="laptopRam"
+                placeholder="16"
+                value={formik.values.laptopRam}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.errors.laptopRam && formik.touched.laptopRam
+                    ? formik.errors.laptopRam
+                    : null
+                }
               />
             </InputWrapper>
-            <RadioInputContainer>
-              <Wrapa>
-                <RadioInputTitle
+            <MemoryWrapper memoryType>
+              <RadioInputTitle
+                error={
+                  formik.errors.memoryType && formik.touched.memoryType
+                    ? formik.errors.memoryType
+                    : null
+                }
+              >
+                მეხსიერების ტიპი
+              </RadioInputTitle>
+              <RadioInputWrapper>
+                <RadioInput
+                  value="SSD"
+                  name="memoryType"
+                  id="SSD"
+                  onChange={formik.handleChange}
+                  checked={formik.values.memoryType === "SSD"}
+                  label="SSD"
+                  onBlur={formik.handleBlur}
                   error={
                     formik.errors.memoryType && formik.touched.memoryType
                       ? formik.errors.memoryType
                       : null
                   }
-                >
-                  მეხსიერების ტიპი
-                </RadioInputTitle>
-                <RadioInputWrapper>
-                  <RadioInput
-                    value="SSD"
-                    name="memoryType"
-                    id="SSD"
-                    onChange={formik.handleChange}
-                    checked={formik.values.memoryType === "SSD"}
-                    label="SSD"
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.errors.memoryType && formik.touched.memoryType
-                        ? formik.errors.memoryType
-                        : null
-                    }
-                  />
-                  <RadioInput
-                    value="HDD"
-                    name="memoryType"
-                    id="HDD"
-                    onChange={formik.handleChange}
-                    checked={formik.values.memoryType === "HDD"}
-                    label="HDD"
-                    isSecond
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.errors.memoryType && formik.touched.memoryType
-                        ? formik.errors.memoryType
-                        : null
-                    }
-                  />
-                </RadioInputWrapper>
-              </Wrapa>
-            </RadioInputContainer>
-          </Div>
+                />
+                <RadioInput
+                  value="HDD"
+                  name="memoryType"
+                  id="HDD"
+                  onChange={formik.handleChange}
+                  checked={formik.values.memoryType === "HDD"}
+                  label="HDD"
+                  isSecond
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.errors.memoryType && formik.touched.memoryType
+                      ? formik.errors.memoryType
+                      : null
+                  }
+                />
+              </RadioInputWrapper>
+            </MemoryWrapper>
+          </RamWrapper>
           <Border />
           <InputContainer>
             <InputWrapper>
@@ -253,7 +254,7 @@ const LaptopForm = () => {
                 }
               />
             </InputWrapper>
-            <InputWrapper>
+            <InputWrapper laptopPrice>
               <Input
                 label="ლეპტოპის ფასი"
                 name="laptopPrice"
@@ -269,7 +270,7 @@ const LaptopForm = () => {
               />
             </InputWrapper>
           </InputContainer>
-          <Divv>
+          <StateWrapper>
             <RadioInputTitle
               error={
                 formik.errors.laptopState && formik.touched.laptopState
@@ -304,7 +305,7 @@ const LaptopForm = () => {
                 isSecond
               />
             </RadioInputWrapper>
-          </Divv>
+          </StateWrapper>
           <ButtonContainer>
             <TransparentButtonWrapper>
               <Button

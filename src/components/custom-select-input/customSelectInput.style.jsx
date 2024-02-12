@@ -12,3 +12,7 @@ export const Label = styled.p`
   color: transparent;
   font-size: 18px;
 `;
+
+export const SelectInputWrapper = styled.div`
+  position: relative;
+`;

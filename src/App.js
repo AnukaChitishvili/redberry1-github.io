@@ -7,7 +7,6 @@ import LaptopInfo from "./pages/laptop-info/LaptopInfo";
 import LaptopList from "./pages/laptop-list/LaptopList";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import LaptopData from "./pages/laptop-data/LaptopData";
-import PopUp from "./pop-up/PopUp";
 import useGetData from "./helpers/use-get-data/useGetData";
 
 export const App = () => {
@@ -19,7 +18,6 @@ export const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/new-laptop/employee-info" element={<EmployeeInfo />} />
         <Route path="/new-laptop/laptop-info" element={<LaptopInfo />} />
-        <Route path="/new-laptop/success" element={<PopUp />} />
         <Route path="/laptop-list" element={<LaptopList />} />
         <Route path="/laptop-data" element={<LaptopData />} />
         <Route path="*" element={<ErrorPage />} />

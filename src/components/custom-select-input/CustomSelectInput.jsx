@@ -1,6 +1,10 @@
 import Select from "react-select";
 
-import { ErrorMessage, Label } from "./customSelectInput.style";
+import {
+  ErrorMessage,
+  Label,
+  SelectInputWrapper,
+} from "./customSelectInput.style";
 
 const CustomSelectInput = ({
   options,
@@ -23,34 +27,26 @@ const CustomSelectInput = ({
         ...styles,
         color: "#000000",
         ":hover": {
-          backgroundColor: "red",
+          backgroundColor: "grey",
         },
       };
     },
   };
 
-  const defaultValue = (options, value) => {
-    return options ? options.find((option) => option.value === value) : "";
-  };
-
-  // const handleChange = (selectedOption) => {
-  //   console.log("selected", selectedOption);
-  // };
-
   return (
-    <>
+    <SelectInputWrapper>
       <Label>{label}</Label>
       <Select
-        value={defaultValue(options, value)}
+        value={value}
         options={options}
         onChange={(value) => onChange(value)}
         placeholder={placeholder}
         styles={styles}
         onBlur={onBlur}
-        // error={error}
+        error={error}
       />
-      {/* <ErrorMessage>{error}</ErrorMessage> */}
-    </>
+      <ErrorMessage>{error}</ErrorMessage>
+    </SelectInputWrapper>
   );
 };
 

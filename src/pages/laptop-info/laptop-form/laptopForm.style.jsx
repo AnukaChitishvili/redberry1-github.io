@@ -5,16 +5,16 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
-  display: flex;
   justify-content: center;
+  margin-top: 30px;
   padding: 68px 100px;
   border-radius: 18px;
   @media (max-width: 810px) {
-    padding: 0 16px;
-    margin: 0;
+    margin-top: 10px;
+    padding: 0;
     width: 100%;
-    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;
 
@@ -53,6 +53,7 @@ export const CpuWrapper = styled.div`
   width: ${({ isSelect }) => (isSelect ? "200px" : "170px")};
   @media (max-width: 810px) {
     width: 100%;
+    margin-top: 20px;
   }
 `;
 
@@ -60,8 +61,8 @@ export const InputWrapper = styled.div`
   width: 300px;
   @media (max-width: 810px) {
     margin-left: 0;
-    margin-top: 19px;
     width: 100%;
+    margin-top: ${({ laptopPrice }) => (laptopPrice ? "50px" : 0)};
   }
 `;
 
@@ -90,7 +91,7 @@ export const Border = styled.div`
   width: 100%;
   margin: 50px 0;
   @media (max-width: 810px) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -118,30 +119,7 @@ export const TransparentButtonWrapper = styled.div`
 
 // Mobile
 
-export const MobileUploadContainer = styled.div`
-  width: 100%;
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  border-radius: 12px;
-  border: 1px dashed #62a1eb;
-  @media (min-width: 810px) {
-    display: none;
-  }
-`;
-
-export const UploadIconContainer = styled.img`
-  width: 54px;
-  height: 54px;
-  margin-top: 20px;
-`;
-
-//
-
-export const Div = styled.div`
+export const RamWrapper = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
@@ -152,31 +130,27 @@ export const Div = styled.div`
   }
 `;
 
-export const Wrapa = styled.div`
-  margin-left: 100px;
-  @media (max-width: 810px) {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 0;
-  }
-`;
-
 export const RadioInputWrapper = styled.div`
   display: flex;
   margin-top: 40px;
-  @media (max-width: 810px) {
-    /* flex-direction: flex-start; */
-  }
 `;
 
-export const Divv = styled.div`
+export const StateWrapper = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 50px;
   flex-direction: column;
-
   align-items: flex-start;
+`;
+
+export const MemoryWrapper = styled.div`
+  margin-left: 50px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  @media (max-width: 810px) {
+    margin-left: 0;
+    margin-top: ${({ memoryType }) => (memoryType ? "50px" : "20px")};
+  }
 `;

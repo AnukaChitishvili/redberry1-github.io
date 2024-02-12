@@ -15,11 +15,9 @@ export const FormContainer = styled.form`
 
 export const Wrapper = styled.div`
   width: 100%;
-  @media (max-width: 810px) {
-  }
 `;
 
-export const Div = styled.div`
+export const ContentWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

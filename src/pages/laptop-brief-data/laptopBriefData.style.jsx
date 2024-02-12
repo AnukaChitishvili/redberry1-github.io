@@ -22,6 +22,8 @@ export const Img = styled.img`
   height: 178px;
   @media (max-width: 810px) {
     height: 109px;
+    border-radius: 12px;
+    margin-left: 5px;
   }
 `;
 
