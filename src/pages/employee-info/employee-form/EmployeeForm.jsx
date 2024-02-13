@@ -34,7 +34,7 @@ const EmployeeForm = () => {
     },
     validationSchema,
     enableReinitialize: true,
-    onSubmit: (values) => {
+    onSubmit: () => {
       navigate("/new-laptop/laptop-info");
     },
   });

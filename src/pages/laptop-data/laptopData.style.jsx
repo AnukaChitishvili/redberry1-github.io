@@ -66,6 +66,7 @@ export const ListItemTitle = styled.li`
   font-size: 22px;
   color: #000000;
   margin-top: 30px;
+  min-width: 200px;
   &:first-child {
     margin-top: 0;
   }

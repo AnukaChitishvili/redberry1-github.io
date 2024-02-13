@@ -11,7 +11,6 @@ export const Title = styled.h1`
   margin-top: 100px;
   color: #000000;
   font-size: 50px;
-  /* font-family:  */
 `;
 
 export const Paragraph = styled.p`

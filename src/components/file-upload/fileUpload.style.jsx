@@ -9,7 +9,6 @@ export const UploadContainer = styled.div`
   margin-bottom: 30px;
   position: relative;
   @media (max-width: 810px) {
-    /* display: none; */
     height: 200px;
     width: 90%;
     margin-top: 20px;
